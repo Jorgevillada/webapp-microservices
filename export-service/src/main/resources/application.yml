@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: export-service
+
+server:
+  port: 8000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,health

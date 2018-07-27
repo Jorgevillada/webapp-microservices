@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        healthCheckInterval: 5s # para test se disminuye el tiempo
+        healthCheckCriticalTimeout: 6m
+        tags: service=api-gateway, api-gateway
+      config:
+        enabled: true

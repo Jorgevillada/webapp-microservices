@@ -1,0 +1,25 @@
+
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 9000
+
+#más info: https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html
+zuul:
+#  ignoredServices: '*' si se habilita, solo las rutas listadas serán habilitadas, el resto ignoradas, por defecto se registra automáticamente
+  routes:
+    export-service:
+      path: /export-service/**
+      serviceId: export-service
+      # sensitiveHeaders: Cookie,Set-Cookie,Authorization cookies para compartir entre servicios
+      stripPrefix: true # Por defecto ignora el path agregado,  si se desea pasar el prefix export-service, colocar en false
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,health
+
